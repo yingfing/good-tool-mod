@@ -3,21 +3,18 @@
 	"id": "good_tool_mod",
 	"version": "${version}",
 	"name": "Good Tool Mod",
-	"description": "Server information display mod for Minecraft multiplayer servers",
+	"description": "Client-side server information display mod for Minecraft multiplayer",
 	"authors": [
 		"Me!"
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
+		"homepage": "https://github.com/yingfing/good-tool-mod",
 		"sources": "https://github.com/yingfing/good-tool-mod"
 	},
 	"license": "CC0-1.0",
 	"icon": "assets/good_tool_mod/icon.png",
-	"environment": "*",
+	"environment": "client",
 	"entrypoints": {
-		"main": [
-			"com.example.ExampleMod"
-		],
 		"client": [
 			"com.example.client.ExampleModClient"
 		],
@@ -26,7 +23,6 @@
 		]
 	},
 	"mixins": [
-		"good_tool_mod.mixins.json",
 		{
 			"config": "good_tool_mod.client.mixins.json",
 			"environment": "client"
