@@ -5,7 +5,14 @@
 
 name: Build
 
-on: [pull_request, push]
+on:
+  push:
+    branches:
+      - '26.2'
+      - 'main'
+    paths-ignore:
+      - '**.md'
+      - '.gitignore'
 
 jobs:
   build:
