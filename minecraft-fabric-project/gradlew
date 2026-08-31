@@ -1,0 +1,11 @@
+#!/usr/bin/env sh
+set -e
+
+DIR="$(cd "$(dirname "$0")" && pwd)"
+export GRADLE_USER_HOME="$DIR/.gradle"
+
+if [ ! -d "$GRADLE_USER_HOME" ]; then
+    mkdir "$GRADLE_USER_HOME"
+fi
+
+exec ./gradlew "$@"

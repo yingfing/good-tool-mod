@@ -1,0 +1,33 @@
+plugins {
+    id 'fabric-loom' version '0.10-SNAPSHOT'
+}
+
+group = 'com.example'
+version = '1.0.0'
+archivesBaseName = 'mymod'
+
+minecraft {
+    version = "1.21.11"
+    yarnMappings = "1.21.11+build.1"
+    loaderVersion = "0.14.0"
+}
+
+repositories {
+    mavenCentral()
+    maven {
+        url = "https://maven.fabricmc.net/"
+    }
+}
+
+dependencies {
+    minecraft "net.fabricmc:fabric-loader:${loaderVersion}"
+    modCompile "net.fabricmc:fabric-api:${project.fabricApiVersion}"
+}
+
+tasks {
+    jar {
+        from('src/main/resources') {
+            include '**/*'
+        }
+    }
+}
