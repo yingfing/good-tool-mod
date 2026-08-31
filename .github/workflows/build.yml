@@ -8,36 +8,7 @@ name: Build
 on: [pull_request, push]
 
 jobs:
-  build-26-2:
-    name: Build Minecraft 26.2
-    runs-on: ubuntu-24.04
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v6
-
-      - name: Validate Gradle wrapper
-        uses: gradle/actions/wrapper-validation@v6
-
-      - name: Setup JDK 25
-        uses: actions/setup-java@v5
-        with:
-          java-version: '25'
-          distribution: 'microsoft'
-          cache: gradle
-
-      - name: Make Gradle wrapper executable
-        run: chmod +x ./gradlew
-
-      - name: Build with Gradle
-        run: ./gradlew build
-
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v7
-        with:
-          name: Artifacts-26.2
-          path: build/libs/
-
-  build-1-21-11:
+  build:
     name: Build Minecraft 1.21.11
     runs-on: ubuntu-24.04
     steps:
@@ -65,6 +36,6 @@ jobs:
       - name: Upload artifacts
         uses: actions/upload-artifact@v7
         with:
-          name: Artifacts-1.21.11
+          name: good-tool-mod
           path: minecraft-fabric-project/build/libs/
 

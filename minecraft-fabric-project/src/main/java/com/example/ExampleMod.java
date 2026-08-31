@@ -9,7 +9,7 @@ import org.slf4j.LoggerFactory;
 import com.example.network.ServerNetworking;
 
 public class ExampleMod implements ModInitializer {
-	public static final String MOD_ID = "modid";
+	public static final String MOD_ID = "good_tool_mod";
 
 	// This logger is used to write text to the console and the log file.
 	// It is considered best practice to use your mod id as the logger's name.

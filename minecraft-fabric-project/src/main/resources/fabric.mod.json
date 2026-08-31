@@ -1,18 +1,18 @@
 {
 	"schemaVersion": 1,
-	"id": "modid",
+	"id": "good_tool_mod",
 	"version": "${version}",
-	"name": "Example Mod",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"name": "Good Tool Mod",
+	"description": "Server information display mod for Minecraft multiplayer servers",
 	"authors": [
 		"Me!"
 	],
 	"contact": {
 		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"sources": "https://github.com/yingfing/good-tool-mod"
 	},
 	"license": "CC0-1.0",
-	"icon": "assets/modid/icon.png",
+	"icon": "assets/good_tool_mod/icon.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
@@ -26,9 +26,9 @@
 		]
 	},
 	"mixins": [
-		"modid.mixins.json",
+		"good_tool_mod.mixins.json",
 		{
-			"config": "modid.client.mixins.json",
+			"config": "good_tool_mod.client.mixins.json",
 			"environment": "client"
 		}
 	],
