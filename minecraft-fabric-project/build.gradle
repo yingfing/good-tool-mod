@@ -1,33 +1,82 @@
 plugins {
-    id 'fabric-loom' version '0.10-SNAPSHOT'
-}
-
-group = 'com.example'
-version = '1.0.0'
-archivesBaseName = 'mymod'
-
-minecraft {
-    version = "1.21.11"
-    yarnMappings = "1.21.11+build.1"
-    loaderVersion = "0.14.0"
+	id 'net.fabricmc.fabric-loom' version "${loom_version}"
+	id 'maven-publish'
 }
 
 repositories {
-    mavenCentral()
-    maven {
-        url = "https://maven.fabricmc.net/"
-    }
+	mavenCentral()
+	maven {
+		name = 'Fabric'
+		url = 'https://maven.fabricmc.net/'
+	}
+}
+
+loom {
+	splitEnvironmentSourceSets()
+
+	mods {
+		"modid" {
+			sourceSet sourceSets.main
+			sourceSet sourceSets.client
+		}
+	}
+	
+	// Use Mojang mappings
+	decompilers {
+		cfr {
+			options "--compositemap"
+		}
+	}
 }
 
 dependencies {
-    minecraft "net.fabricmc:fabric-loader:${loaderVersion}"
-    modCompile "net.fabricmc:fabric-api:${project.fabricApiVersion}"
+	minecraft "com.mojang:minecraft:${project.minecraft_version}"
+	mappings loom.officialMojangMappings()
+	
+	implementation "net.fabricmc:fabric-loader:${project.loader_version}"
+	implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
+	
+	// Mod Menu for configuration UI
+	modLocalRuntime "com.terraformersmc:modmenu:${modmenu_version}"
 }
 
-tasks {
-    jar {
-        from('src/main/resources') {
-            include '**/*'
-        }
-    }
+processResources {
+	def version = project.version
+	inputs.property "version", version
+
+	filesMatching("fabric.mod.json") {
+		expand "version": version
+	}
+}
+
+tasks.withType(JavaCompile).configureEach {
+	it.options.release = 25
+}
+
+java {
+	withSourcesJar()
+
+	sourceCompatibility = JavaVersion.VERSION_25
+	targetCompatibility = JavaVersion.VERSION_25
+}
+
+jar {
+	def projectName = project.name
+	inputs.property "projectName", projectName
+
+	from("LICENSE") {
+		rename { "${it}_$projectName"}
+	}
+}
+
+publishing {
+	publications {
+		create("mavenJava", MavenPublication) {
+			from components.java
+		}
+	}
+
+	repositories {
+		// Add repositories to publish to here
+	}
 }

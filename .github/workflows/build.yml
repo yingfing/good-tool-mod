@@ -3,28 +3,68 @@
 # certain platforms or Java versions, and provides a first line of defence
 # against bad commits.
 
-name: build
+name: Build
+
 on: [pull_request, push]
 
 jobs:
-  build:
+  build-26-2:
+    name: Build Minecraft 26.2
     runs-on: ubuntu-24.04
     steps:
-      - name: checkout repository
+      - name: Checkout repository
         uses: actions/checkout@v6
-      - name: validate gradle wrapper
+
+      - name: Validate Gradle wrapper
         uses: gradle/actions/wrapper-validation@v6
-      - name: setup jdk
+
+      - name: Setup JDK 25
         uses: actions/setup-java@v5
         with:
           java-version: '25'
           distribution: 'microsoft'
-      - name: make gradle wrapper executable
+          cache: gradle
+
+      - name: Make Gradle wrapper executable
         run: chmod +x ./gradlew
-      - name: build
+
+      - name: Build with Gradle
         run: ./gradlew build
-      - name: capture build artifacts
+
+      - name: Upload artifacts
         uses: actions/upload-artifact@v7
         with:
-          name: Artifacts
+          name: Artifacts-26.2
           path: build/libs/
+
+  build-1-21-11:
+    name: Build Minecraft 1.21.11
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Validate Gradle wrapper
+        uses: gradle/actions/wrapper-validation@v6
+
+      - name: Setup JDK 25
+        uses: actions/setup-java@v5
+        with:
+          java-version: '25'
+          distribution: 'microsoft'
+          cache: gradle
+
+      - name: Make Gradle wrapper executable
+        run: chmod +x ./minecraft-fabric-project/gradlew
+
+      - name: Build with Gradle
+        run: |
+          cd minecraft-fabric-project
+          ./gradlew build
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v7
+        with:
+          name: Artifacts-1.21.11
+          path: minecraft-fabric-project/build/libs/
+
