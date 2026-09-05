@@ -13,17 +13,13 @@
 	},
 	"license": "CC0-1.0",
 	"icon": "assets/goodtoolmod/icon.png",
-	"environment": "*",
+	"environment": "client",
 	"entrypoints": {
-		"main": [
-			"com.example.ExampleMod"
-		],
 		"client": [
 			"com.example.client.ExampleModClient"
 		]
 	},
 	"mixins": [
-		"goodtoolmod.mixins.json",
 		{
 			"config": "goodtoolmod.client.mixins.json",
 			"environment": "client"
