@@ -1,0 +1,16 @@
+{
+	"schemaVersion": 1,
+	"name": "Good Tool Mod Client Mixins",
+	"package": "com.example.client.mixin",
+	"required": true,
+	"minVersion": "0.8",
+	"compatibilityLevel": "JAVA_25",
+	"mixins": [
+	],
+	"client": [
+		"ExampleClientMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	}
+}

@@ -1,40 +1,74 @@
-# gradle
-
-.gradle/
+```
+# Compiled and build artifacts
+*.pyc
+__pycache__/
+*.class
+*.o
+*.obj
+*.exe
+*.dll
+*.so
+*.a
+*.out
+dist/
 build/
-out/
-classes/
+target/
 
-# eclipse
+# Dependencies
+node_modules/
+venv/
+.venv/
+.env
+.env.local
+.env.*
 
-*.launch
-
-# idea
-
-.idea/
-*.iml
-*.ipr
-*.iws
-
-# vscode
-
-.settings/
+# Editors and IDEs
 .vscode/
-bin/
-.classpath
-.project
+.idea/
+*.swp
+*.swo
+*.tmp
 
-# macos
+# System files
+.DS_Store
+Thumbs.db
 
-*.DS_Store
+# Logs
+*.log
 
-# fabric
+# Coverage
+coverage/
+htmlcov/
+.coverage
 
-run/
+# Python specific
+.mypy_cache/
+.pytest_cache/
 
-# java
+# Gradle
+.gradle/
 
-hs_err_*.log
-replay_*.log
-*.hprof
-*.jfr
+# Compressed files
+*.zip
+*.gz
+*.tar
+*.tgz
+*.bz2
+*.xz
+*.7z
+*.rar
+*.zst
+*.lz4
+*.lzh
+*.cab
+*.arj
+*.rpm
+*.deb
+*.Z
+*.lz
+*.lzo
+*.tar.gz
+*.tar.bz2
+*.tar.xz
+*.tar.zst
+```
